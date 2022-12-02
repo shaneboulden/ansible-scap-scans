@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xccdf:Tailoring xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2" id="xccdf_scap-workbench_tailoring_default">
+  <xccdf:benchmark href="/tmp/scap-workbench-RVXYKn/ssg-rhel8-ds.xml"/>
+  <xccdf:version time="2022-12-02T12:48:49">1</xccdf:version>
+  <xccdf:Profile id="xccdf_org.ssgproject.content_profile_e8_custom" extends="xccdf_org.ssgproject.content_profile_e8">
+    <xccdf:title xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">Australian Cyber Security Centre (ACSC) Essential Eight [CUSTOM]</xccdf:title>
+    <xccdf:description xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">This profile contains configuration checks for Red Hat Enterprise Linux 8
+that align to the Australian Cyber Security Centre (ACSC) Essential Eight.
+
+A copy of the Essential Eight in Linux Environments guide can be found at the
+ACSC website:
+
+https://www.cyber.gov.au/acsc/view-all-content/publications/hardening-linux-workstations-and-servers</xccdf:description>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_integrity" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_endpoint_security_software" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_mcafee_security_software" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_mcafee_hbss_software" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_install_mcafee_hbss_pa" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_install_mcafee_hbss_accm" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_package_MFEhiplsm_installed" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_mcafee_endpoint_security_software" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_agent_mfetpd_running" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_package_mcafeetp_installed" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_mcafee_antivirus_definitions_updated" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_install_mcafee_cma_rt" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_install_mcafee_antivirus" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_service_nails_enabled" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_install_hids" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_install_antivirus" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_user_data_backups" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_certified-vendor" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_installed_OS_is_vendor_supported" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_installed_OS_is_FIPS_certified" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_crypto" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_openssl_use_strong_entropy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_harden_sshd_macs_opensshserver_conf_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_harden_sshd_macs_openssh_conf_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_harden_sshd_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_harden_sshd_ciphers_opensshserver_conf_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_harden_sshd_ciphers_openssh_conf_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_harden_ssh_client_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_harden_openssl_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_ssh_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_openssl_tls_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_openssl_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_libreswan_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_kerberos_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_gnutls_tls_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_configure_bind_crypto_policy" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_package_crypto-policies_installed" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_fips" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_sysctl_crypto_fips_enabled" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_etc_system_fips_exists" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_enable_fips_mode" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_enable_dracut_fips_module" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_software-integrity" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_aide" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_file_audit_tools_permissions" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_file_audit_tools_ownership" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_file_audit_tools_group_ownership" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_aide_verify_ext_attributes" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_aide_verify_acls" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_aide_use_fips_hashes" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_aide_scan_notification" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_aide_periodic_cron_checking" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_aide_check_audit_tools" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_aide_build_database" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_package_aide_installed" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_group_rpm_verification" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_rpm_verify_permissions" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_rpm_verify_ownership" selected="false"/>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_rpm_verify_hashes" selected="false"/>
+  </xccdf:Profile>
+</xccdf:Tailoring>

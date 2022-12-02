@@ -1,0 +1,59 @@
+---
+- name: Scan hosts with SCAP content
+  hosts: all
+  become: true
+
+  tasks:
+    - block:
+      - name: Ensure that the OpenSCAP content is available
+        ansible.builtin.yum:
+          name: "{{ item }}"
+          state: latest
+        loop:
+          - openscap-scanner
+          - scap-security-guide
+
+      - name: Copy across the tailoring file
+        ansible.builtin.copy:
+          src: ssg-tailored-profile.xml
+          dest: /var/tmp/ssg-tailored-profile.xml
+
+      - name: Perform a scan
+        ansible.builtin.shell: oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_e8_custom --tailoring-file /var/tmp/ssg-tailored-profile.xml --results-arf /var/tmp/results-arf.xml /usr/share/xml/scap/ssg/content/ssg-rhel8-ds.xml
+        register: result
+        failed_when: result.rc == 1
+        no_log: true
+
+      - name: Create a HTML report
+        ansible.builtin.shell: oscap xccdf generate report /var/tmp/results-arf.xml > /var/tmp/report.html
+
+      - name: Fetch the results and report from the scanned server
+        ansible.builtin.fetch:
+          src: "{{ item }}"
+          dest: "{{ item }}"
+        loop:
+          - /var/tmp/results-arf.xml
+          - /var/tmp/report.html
+
+      rescue:
+        - name: Catch any failures
+          ansible.builtin.debug:
+            msg: "The SCAP scan failed! You should definitely investigate this."
+
+      always:
+        - name: Remove the OpenSCAP utilities
+          ansible.builtin.yum:
+            name: "{{ item }}"
+            state: absent
+          loop:
+            - openscap-scanner
+            - scap-security-guide
+
+        - name: Remove any files left on the host
+          ansible.builtin.file:
+            path: "{{ item }}"
+            state: absent
+          loop:
+            - /var/tmp/ssg-tailored-profile.xml
+            - /var/tmp/results-arf.xml
+            - /var/tmp/report.html
